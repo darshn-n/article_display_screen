@@ -27,8 +27,8 @@ class CustomTag extends StatelessWidget {
   }
 }
 
-class ArticleDisplayScreen extends StatelessWidget {
-  const ArticleDisplayScreen ({
+class ArticleDisplayScreen extends StatefulWidget {
+  const ArticleDisplayScreen({
     Key? key,
     this.height,
     this.borderRadius = 20,
@@ -58,16 +58,21 @@ class ArticleDisplayScreen extends StatelessWidget {
   final Widget? child;
 
   @override
+  State<ArticleDisplayScreen> createState() => _ArticleDisplayScreenState();
+}
+
+class _ArticleDisplayScreenState extends State<ArticleDisplayScreen> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
+      height: widget.height,
       width: double.infinity,
-      margin: margin,
-      padding: padding,
+      margin: widget.margin,
+      padding: widget.padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
-          image: NetworkImage(imageUrl),
+          image: NetworkImage(widget.imageUrl),
           fit: BoxFit.cover,
         ), // DecorationImage
       ),
@@ -86,32 +91,9 @@ class ArticleDisplayScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // SizedBox(height: MediaQuery.of(context).size.aspectRatio = 0.15,),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      height: 1.25,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    subtitle, // TODO: add subtitle
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+              child: NewsHeadline(
+                title: widget.title,
+                subtitle: widget.subtitle,
               ),
             ),
             Container(
@@ -135,11 +117,11 @@ class ArticleDisplayScreen extends StatelessWidget {
                         backgroundColor: Colors.black38,
                         children: [
                           Text(
-                            author,
+                            widget.author,
                             style:
-                            Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: Colors.white,
-                            ),
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Colors.white,
+                                    ),
                           ),
                         ],
                       ),
@@ -150,11 +132,11 @@ class ArticleDisplayScreen extends StatelessWidget {
                         backgroundColor: Colors.black38,
                         children: [
                           Text(
-                            date,
+                            widget.date,
                             style:
-                            Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: Colors.white,
-                            ),
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Colors.white,
+                                    ),
                           ),
                         ],
                       ),
@@ -164,27 +146,72 @@ class ArticleDisplayScreen extends StatelessWidget {
                     height: 10.0,
                   ),
                   Text(
-                    title,
+                    widget.title,
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   Text(
-                    content,
+                    widget.content,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.black,
-                      height: 1.5,
-                    ),
+                          color: Colors.black,
+                          height: 1.5,
+                        ),
                   ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NewsHeadline extends StatelessWidget {
+  const NewsHeadline({
+    Key? key,
+    required this.title,
+    required this.subtitle,
+  }) : super(key: key);
+
+  final title;
+  final subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // SizedBox(height: MediaQuery.of(context).size.aspectRatio = 0.15,),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  height: 1.25,
+                ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            subtitle, // TODO: add subtitle
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Colors.white,
+                ),
+          ),
+        ],
       ),
     );
   }

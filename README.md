@@ -10,30 +10,81 @@ For general information about developing packages, see the Dart guide for
 and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
+# Pretty text field
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+First Open Source Flutter based Beautiful Material Design Text fields.(More designed text fields coming soon.)
+
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+[*] Compatible on Android and iOS.
+
+  * [✓] Customizable textfield properties.
+  * [✓] Beautiful FontStyles
+  * [✓] User defined text controller 
+  * [✓] Fully Responsive
+  * [✓] Loading indicator function (Coming Soon)
+
+### Show some :heart: and star the repo to support the project
+
+
+### Screenshots
+
+<img src="ss1.jpg" height="300em" />&nbsp;&nbsp;&nbsp; <img src="ss2.jpg" height="300em" /> &nbsp;&nbsp;&nbsp; 
+<img src="ss3.gif" height="300em" /> 
+
+
+### Usage
+
+[Example](https://github.com/darshn-n/pretty_textfield/blob/master/example/example_app.dart)
+
+
+### Created & Maintained By
+
+[Darshan N](https://github.com/darshn-n) 
+
+> If you found this project helpful or you learned something from the source code and want to thank me <darshan51081@gmail.com>
+
+# License
+
+    Copyright 2022 Darshan N
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.dev/).
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+* To add the following dependency to your [pubspec.yaml](https://github.com/darshn-n/pretty_textfield)
+
+```yaml
+    dependencies:
+        flutter:
+            sdk: flutter
+        pretty_textfield:
+```
 
 ```dart
-const like = 'sample';
+    PrettyTextField(
+          width: 350,
+          labelText: "Enter Your Name",
+          controller: controller.text;        
+    );
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+This package is Light-weight with every properties of basic TextField.
